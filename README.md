@@ -17,7 +17,7 @@ It's built on:
 
 ## What's interesting
 
-All points in the list was made by my for the first time:
+All points in the list was made by me for the first time:
 
 - Password hashing
 - Token generation and validation

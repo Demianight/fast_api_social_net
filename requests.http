@@ -1,0 +1,79 @@
+###
+GET http://127.0.0.1:8000/
+
+###
+GET http://127.0.0.1:8000/posts
+
+###
+POST http://127.0.0.1:8000/posts
+Content-Type: application/json
+
+{
+    "title": "Title",
+    "description": "Description"
+}
+
+###
+DELETE http://127.0.0.1:8000/posts/2/
+
+###
+PATCH http://127.0.0.1:8000/posts/1
+Content-Type: application/json
+
+{
+    "title": "Title1"
+}
+
+###
+PATCH http://127.0.0.1:8000/posts/3
+Content-Type: application/json
+
+{
+    "title": "Title2"
+}
+
+
+###
+POST http://127.0.0.1:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Demianight",
+    "password": "111222333"
+}
+
+###
+POST http://127.0.0.1:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Demianight",
+    "password": "qwfoij"
+}
+
+###
+POST http://127.0.0.1:8000/users
+Content-Type: application/json
+
+{
+    "username": "Demianight",
+    "password": "111222333",
+    "email": "kdemian@yandex.ru"
+}
+
+###
+GET  http://127.0.0.1:8000/users
+
+
+###
+GET  http://127.0.0.1:8000/auth/me
+
+
+###
+GET  http://127.0.0.1:8000/auth/me
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzdHJpbmciLCJ1c2VybmFtZSI6InN0cmluZyJ9.jbvo8IakDhWx02TVTsqBXxWmODBGNxa9YLUu_58CojhBGx4McEypThJc_Dal_zzjl8cX-B6VaytCpakFf8y24C61kXo5KADQ_F9GkKHYm8KyFe00q70xzoyfg5e7-5QFcFOJ1RdmOZ2wAN2y9EHWxowLGuvlzg77915SXfimLmp1OPHsfjo5YsKWCJfmx8jEfYbyyL8Qvxd_jYXJJGhEGyvvJU-M3DZHIpXzRU823RY7WxwrJdrdB0Zhtw77rSg1w_wo5aBU6tfWrt9_n97p6po9wHuRtl9-KeikfLQX31MDnyPf0UDuFi74Jj43CQ_JQKoIc4pvSvAwyCv5h64_DA
+
+###
+GET  http://127.0.0.1:8000/auth/me
+Authorization: Bearer ...
+

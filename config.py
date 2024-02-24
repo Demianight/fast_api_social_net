@@ -1,9 +1,9 @@
-import os
+from functools import cache
 from pathlib import Path
 
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).parent
 
@@ -16,20 +16,31 @@ class AuthJWT(BaseModel):
     algorithm: str = 'RS256'
 
 
-class Email(BaseModel):
-    username: str = os.getenv('MAIL_USERNAME') or ''
-    password: str = os.getenv('MAIL_PASSWORD') or ''
-    host: str = os.getenv('MAIL_HOST') or ''
-    port: int = int(os.getenv('MAIL_PORT') or 0)
+class Mail(BaseModel):
+    username: str
+    password: str
+    host: str
+    port: int
 
 
 class Settings(BaseSettings):
-    auth_jwt: AuthJWT = AuthJWT()
-    email: Email = Email()
+    model_config = SettingsConfigDict(
+        env_file='.env',
+        env_nested_delimiter='_'
+    )
 
-    salt: str = os.getenv('SALT') or ''
+    auth_jwt: AuthJWT = AuthJWT()
+    mail: Mail
+
+    salt: str
+
     host: str = 'http://127.0.0.1:8000/%s'
     confirmation_url: str = 'http://127.0.0.1:8000/auth/confirm/%s'
 
 
-settings = Settings()
+@cache
+def get_settings() -> Settings:
+    return Settings()
+
+
+settings = get_settings()
